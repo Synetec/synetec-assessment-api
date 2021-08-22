@@ -1,31 +1,36 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using SynetecAssessmentApi.Domain;
 using SynetecAssessmentApi.Dtos;
+using SynetecAssessmentApi.Exceptions;
 using SynetecAssessmentApi.Persistence;
+using SynetecAssessmentApi.Persistence.Repositorys;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace SynetecAssessmentApi.Services
 {
-    public class BonusPoolService
+    public interface IBonusPoolService
     {
-        private readonly AppDbContext _dbContext;
+        Task<IEnumerable<EmployeeDto>> GetEmployeesAsync();
+        Task<BonusPoolCalculatorResultDto> CalculateAsync(int bonusPoolAmount, int selectedEmployeeId);
 
-        public BonusPoolService()
+    }
+    public class BonusPoolService: IBonusPoolService
+    {
+        private readonly IEmployeeRepository _employeeRepository;
+        private readonly ILogger<BonusPoolService> _logger;
+
+        public BonusPoolService(IEmployeeRepository employeeRepository, ILogger<BonusPoolService> logger)
         {
-            var dbContextOptionBuilder = new DbContextOptionsBuilder<AppDbContext>();
-            dbContextOptionBuilder.UseInMemoryDatabase(databaseName: "HrDb");
-
-            _dbContext = new AppDbContext(dbContextOptionBuilder.Options);
+            _employeeRepository = employeeRepository;
+            _logger = logger;
         }
 
         public async Task<IEnumerable<EmployeeDto>> GetEmployeesAsync()
         {
-            IEnumerable<Employee> employees = await _dbContext
-                .Employees
-                .Include(e => e.Department)
-                .ToListAsync();
+            var employees = await _employeeRepository.GetAllEmployees();
 
             List<EmployeeDto> result = new List<EmployeeDto>();
 
@@ -51,12 +56,16 @@ namespace SynetecAssessmentApi.Services
         public async Task<BonusPoolCalculatorResultDto> CalculateAsync(int bonusPoolAmount, int selectedEmployeeId)
         {
             //load the details of the selected employee using the Id
-            Employee employee = await _dbContext.Employees
-                .Include(e => e.Department)
-                .FirstOrDefaultAsync(item => item.Id == selectedEmployeeId);
+            var employee = await _employeeRepository.GetEmployeeById(selectedEmployeeId);
+
+            if (employee == null)
+            {
+                _logger.LogError($"Cannot find employee with Id {selectedEmployeeId}");
+                throw new InvalidEmployeeIdException($"Invalid employee Id: {selectedEmployeeId}");
+            }
 
             //get the total salary budget for the company
-            int totalSalary = (int)_dbContext.Employees.Sum(item => item.Salary);
+            int totalSalary = await _employeeRepository.GetTotalCompanySalary();
 
             //calculate the bonus allocation for the employee
             decimal bonusPercentage = (decimal)employee.Salary / (decimal)totalSalary;
