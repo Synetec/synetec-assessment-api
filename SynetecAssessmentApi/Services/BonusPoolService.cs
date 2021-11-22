@@ -27,6 +27,8 @@ namespace SynetecAssessmentApi.Services
                 .Include(e => e.Department)
                 .ToListAsync();
 
+          
+
             List<EmployeeDto> result = new List<EmployeeDto>();
 
             foreach (var employee in employees)
@@ -78,6 +80,38 @@ namespace SynetecAssessmentApi.Services
 
                 Amount = bonusAllocation
             };
+        }
+
+        public async Task<List<BonusPoolCalculatorResultDto>> CalculateBonusAsync(int bonusPoolAmount)
+        {
+
+            List<Employee> employees = await Task.Run(() => _dbContext.Employees.Include(e => e.Department).ToListAsync());
+
+            int totalSalary = (int)_dbContext.Employees.Sum(item => item.Salary);
+            var employeeList = new List<BonusPoolCalculatorResultDto>();
+            foreach (var empData in employees)
+            {
+                decimal bonusPercentage = (decimal)empData.Salary / (decimal)totalSalary;
+                int bonusAllocation = (int)(bonusPercentage * bonusPoolAmount);
+                BonusPoolCalculatorResultDto bonusPool = new BonusPoolCalculatorResultDto
+                {
+                    Employee = new EmployeeDto
+                    {
+                        Fullname = empData.Fullname,
+                        JobTitle = empData.JobTitle,
+                        Salary = empData.Salary,
+                        Department = new DepartmentDto
+                        {
+                            Title = empData.JobTitle,
+                            Description = empData.Department.Description
+                        }
+                    },
+                    Amount = bonusAllocation
+                };
+                employeeList.Add(bonusPool);
+
+            }
+            return employeeList;
         }
     }
 }

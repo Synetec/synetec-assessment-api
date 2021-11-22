@@ -1,0 +1,153 @@
+2021-11-22 21:46:31.9222 Debug ScanAssembly('NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c')
+2021-11-22 21:46:32.1558 Debug Found assembly location directory: 'C:\Users\User\Source\Repos\deepeshverma\synetec-assessment-api\SynetecAssessmentApi\bin\Debug\net5.0' (NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c)
+2021-11-22 21:46:32.1558 Debug Auto loading based on NLog-Assembly found location: C:\Users\User\Source\Repos\deepeshverma\synetec-assessment-api\SynetecAssessmentApi\bin\Debug\net5.0
+2021-11-22 21:46:32.1611 Debug Search for auto loading files in location: C:\Users\User\Source\Repos\deepeshverma\synetec-assessment-api\SynetecAssessmentApi\bin\Debug\net5.0
+2021-11-22 21:46:32.1611 Debug Found assembly location directory: 'C:\Users\User\Source\Repos\deepeshverma\synetec-assessment-api\SynetecAssessmentApi\bin\Debug\net5.0' (SynetecAssessmentApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null)
+2021-11-22 21:46:32.1611 Debug Auto loading based on GetEntryAssembly-Assembly found location: C:\Users\User\Source\Repos\deepeshverma\synetec-assessment-api\SynetecAssessmentApi\bin\Debug\net5.0
+2021-11-22 21:46:32.1611 Debug Auto loading based on AppDomain-BaseDirectory found location: C:\Users\User\Source\Repos\deepeshverma\synetec-assessment-api\SynetecAssessmentApi\bin\Debug\net5.0
+2021-11-22 21:46:32.1611 Debug Start auto loading, location: C:\Users\User\Source\Repos\deepeshverma\synetec-assessment-api\SynetecAssessmentApi\bin\Debug\net5.0
+2021-11-22 21:46:32.1769 Trace Assembly 'Microsoft.Extensions.Logging, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60' will be hidden in callsite stacktrace
+2021-11-22 21:46:32.1769 Trace Assembly 'Microsoft.Extensions.Logging.Abstractions, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60' will be hidden in callsite stacktrace
+2021-11-22 21:46:32.1769 Debug Auto loading done
+2021-11-22 21:46:32.1769 Info Message Template Auto Format enabled
+2021-11-22 21:46:32.1769 Info Loading assembly: NLog.Extended
+2021-11-22 21:46:32.2073 Trace Try find 'NLog.Extended' in current domain
+2021-11-22 21:46:32.2073 Trace Haven't found' 'NLog.Extended' in current domain
+2021-11-22 21:46:32.2073 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Error loading extensions: NLog.Extended
+ ---> System.IO.FileNotFoundException: Could not load file or assembly 'NLog.Extended, Culture=neutral, PublicKeyToken=null'. The system cannot find the file specified.
+File name: 'NLog.Extended, Culture=neutral, PublicKeyToken=null'
+   at System.Reflection.RuntimeAssembly.InternalLoad(ObjectHandleOnStack assemblyName, ObjectHandleOnStack requestingAssembly, StackCrawlMarkHandle stackMark, Boolean throwOnFileNotFound, ObjectHandleOnStack assemblyLoadContext, ObjectHandleOnStack retAssembly)
+   at System.Reflection.RuntimeAssembly.InternalLoad(AssemblyName assemblyName, RuntimeAssembly requestingAssembly, StackCrawlMark& stackMark, Boolean throwOnFileNotFound, AssemblyLoadContext assemblyLoadContext)
+   at System.Reflection.Assembly.Load(String assemblyString)
+   at NLog.Internal.AssemblyHelpers.LoadFromName(String assemblyName)
+   at NLog.Config.LoggingConfigurationParser.ParseExtensionWithAssembly(String assemblyName, String prefix)
+   --- End of inner exception stack trace ---
+2021-11-22 21:46:32.2300 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2021-11-22 21:46:32.2300 Trace Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2021-11-22 21:46:32.2412 Debug Setting 'NLog.LayoutRenderers.Wrappers.UppercaseLayoutRendererWrapper.uppercase' to 'true'
+2021-11-22 21:46:32.2412 Trace Wrapping NLog.LayoutRenderers.LevelLayoutRenderer with NLog.LayoutRenderers.Wrappers.UppercaseLayoutRendererWrapper
+2021-11-22 21:46:32.2412 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2021-11-22 21:46:32.2412 Trace Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2021-11-22 21:46:32.2412 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2021-11-22 21:46:32.2412 Trace Scanning UppercaseLayoutRendererWrapper 'Layout Renderer: ${uppercase}'
+2021-11-22 21:46:32.2412 Trace  Scanning Property Inner 'SimpleLayout=Layout Renderer: ${level}' NLog.Layouts
+2021-11-22 21:46:32.2412 Trace  Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2021-11-22 21:46:32.2412 Trace   Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2021-11-22 21:46:32.2412 Trace   Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2021-11-22 21:46:32.2541 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2021-11-22 21:46:32.2541 Trace Scanning LoggerNameLayoutRenderer 'Layout Renderer: ${logger}'
+2021-11-22 21:46:32.2541 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2021-11-22 21:46:32.2541 Trace Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2021-11-22 21:46:32.2541 Debug Setting 'NLog.Targets.FileTarget.name' to 'logfile'
+2021-11-22 21:46:32.2541 Debug Setting 'NLog.Targets.FileTarget.fileName' to 'C:\Users\User\source\repos\deepeshverma\synetec-assessment-api\SynetecAssessmentApi\Logs\${shortdate}_log.txt'
+2021-11-22 21:46:32.2541 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2021-11-22 21:46:32.2541 Trace Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2021-11-22 21:46:32.2696 Debug Setting 'NLog.Targets.FileTarget.layout' to '${longdate} ${level:uppercase=true} ${message}'
+2021-11-22 21:46:32.2696 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2021-11-22 21:46:32.2696 Trace Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2021-11-22 21:46:32.2696 Debug Setting 'NLog.LayoutRenderers.Wrappers.UppercaseLayoutRendererWrapper.uppercase' to 'true'
+2021-11-22 21:46:32.2696 Trace Wrapping NLog.LayoutRenderers.LevelLayoutRenderer with NLog.LayoutRenderers.Wrappers.UppercaseLayoutRendererWrapper
+2021-11-22 21:46:32.2696 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2021-11-22 21:46:32.2696 Trace Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2021-11-22 21:46:32.2696 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2021-11-22 21:46:32.2696 Trace Scanning UppercaseLayoutRendererWrapper 'Layout Renderer: ${uppercase}'
+2021-11-22 21:46:32.2696 Trace  Scanning Property Inner 'SimpleLayout=Layout Renderer: ${level}' NLog.Layouts
+2021-11-22 21:46:32.2696 Trace  Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2021-11-22 21:46:32.2696 Trace   Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2021-11-22 21:46:32.2696 Trace   Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2021-11-22 21:46:32.2696 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2021-11-22 21:46:32.2696 Trace Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2021-11-22 21:46:32.2696 Info Adding target FileTarget(Name=logfile)
+2021-11-22 21:46:32.2696 Debug Registered target logfile: NLog.Targets.FileTarget
+2021-11-22 21:46:32.2696 Trace ParseRulesElement
+2021-11-22 21:46:32.3024 Debug Watching path 'C:\Users\User\Source\Repos\deepeshverma\synetec-assessment-api\SynetecAssessmentApi\bin\Debug\net5.0' filter 'NLog.config' for changes.
+2021-11-22 21:46:32.3024 Debug --- NLog configuration dump ---
+2021-11-22 21:46:32.3024 Debug Targets:
+2021-11-22 21:46:32.3024 Debug File Target[logfile]
+2021-11-22 21:46:32.3024 Debug Rules:
+2021-11-22 21:46:32.3024 Debug logNamePattern: (:All) levels: [ Debug Info Warn Error Fatal ] appendTo: [ logfile ]
+2021-11-22 21:46:32.3024 Debug --- End of NLog configuration dump ---
+2021-11-22 21:46:32.3250 Trace FindReachableObject<System.Object>:
+2021-11-22 21:46:32.3250 Trace Scanning LoggingRule 'logNamePattern: (:All) levels: [ Debug Info Warn Error Fatal ] appendTo: [ logfile ]'
+2021-11-22 21:46:32.3250 Trace  Scanning Property Targets 'System.Collections.Generic.List`1[NLog.Targets.Target]' System.Collections.Generic
+2021-11-22 21:46:32.3250 Trace  Scanning FileTarget 'File Target[logfile]'
+2021-11-22 21:46:32.3317 Trace   Scanning Property FileName ''C:\Users\User\source\repos\deepeshverma\synetec-assessment-api\SynetecAssessmentApi\Logs\${shortdate}_log.txt'' NLog.Layouts
+2021-11-22 21:46:32.3317 Trace   Scanning SimpleLayout ''C:\Users\User\source\repos\deepeshverma\synetec-assessment-api\SynetecAssessmentApi\Logs\${shortdate}_log.txt''
+2021-11-22 21:46:32.3317 Trace    Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2021-11-22 21:46:32.3317 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2021-11-22 21:46:32.3317 Trace    Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2021-11-22 21:46:32.3317 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2021-11-22 21:46:32.3317 Trace   Scanning Property LineEnding 'Default' NLog.Targets
+2021-11-22 21:46:32.3317 Trace   Scanning Property Layout ''${longdate} ${level:uppercase=true} ${message}'' NLog.Layouts
+2021-11-22 21:46:32.3317 Trace   Scanning SimpleLayout ''${longdate} ${level:uppercase=true} ${message}''
+2021-11-22 21:46:32.3317 Trace    Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2021-11-22 21:46:32.3317 Trace    Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2021-11-22 21:46:32.3317 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2021-11-22 21:46:32.3317 Trace    Scanning UppercaseLayoutRendererWrapper 'Layout Renderer: ${uppercase}'
+2021-11-22 21:46:32.3317 Trace     Scanning Property Inner 'SimpleLayout=Layout Renderer: ${level}' NLog.Layouts
+2021-11-22 21:46:32.3317 Trace     Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2021-11-22 21:46:32.3317 Trace      Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2021-11-22 21:46:32.3317 Trace      Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2021-11-22 21:46:32.3317 Trace    Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2021-11-22 21:46:32.3317 Trace    Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2021-11-22 21:46:32.3317 Trace  Scanning Property ChildRules 'System.Collections.Generic.List`1[NLog.Config.LoggingRule]' System.Collections.Generic
+2021-11-22 21:46:32.3317 Trace  Scanning Property Filters 'System.Collections.Generic.List`1[NLog.Filters.Filter]' System.Collections.Generic
+2021-11-22 21:46:32.3504 Info Validating config: TargetNames=logfile, ConfigItems=14, FilePath=C:\Users\User\Source\Repos\deepeshverma\synetec-assessment-api\SynetecAssessmentApi\bin\Debug\net5.0\NLog.config
+2021-11-22 21:46:32.3504 Debug Unused target checking is started... Rule Count: 1, Target Count: 1
+2021-11-22 21:46:32.3504 Debug Unused target checking is completed. Total Rule Count: 1, Total Target Count: 1, Unused Target Count: 0
+2021-11-22 21:46:32.3504 Trace Initializing Layout Renderer: ${message}
+2021-11-22 21:46:32.3636 Trace Initializing Layout Renderer: ${literal}
+2021-11-22 21:46:32.3636 Trace Initializing Layout Renderer: ${level}
+2021-11-22 21:46:32.3636 Trace Initializing SimpleLayout=Layout Renderer: ${level}
+2021-11-22 21:46:32.3636 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2021-11-22 21:46:32.3636 Trace Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2021-11-22 21:46:32.3636 Trace  Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2021-11-22 21:46:32.3636 Trace  Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2021-11-22 21:46:32.3636 Trace Initializing Layout Renderer: ${uppercase}
+2021-11-22 21:46:32.3636 Trace Initializing Layout Renderer: ${literal}
+2021-11-22 21:46:32.3636 Trace Initializing Layout Renderer: ${longdate}
+2021-11-22 21:46:32.3636 Trace Initializing '${longdate} ${level:uppercase=true} ${message}'
+2021-11-22 21:46:32.3793 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2021-11-22 21:46:32.3793 Trace Scanning SimpleLayout ''${longdate} ${level:uppercase=true} ${message}''
+2021-11-22 21:46:32.3793 Trace  Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2021-11-22 21:46:32.3793 Trace  Scanning LongDateLayoutRenderer 'Layout Renderer: ${longdate}'
+2021-11-22 21:46:32.3793 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2021-11-22 21:46:32.3793 Trace  Scanning UppercaseLayoutRendererWrapper 'Layout Renderer: ${uppercase}'
+2021-11-22 21:46:32.3793 Trace   Scanning Property Inner 'SimpleLayout=Layout Renderer: ${level}' NLog.Layouts
+2021-11-22 21:46:32.3793 Trace   Scanning SimpleLayout 'SimpleLayout=Layout Renderer: ${level}'
+2021-11-22 21:46:32.3793 Trace    Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2021-11-22 21:46:32.3793 Trace    Scanning LevelLayoutRenderer 'Layout Renderer: ${level}'
+2021-11-22 21:46:32.3793 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2021-11-22 21:46:32.3793 Trace  Scanning MessageLayoutRenderer 'Layout Renderer: ${message}'
+2021-11-22 21:46:32.3793 Trace Initializing Layout Renderer: ${literal}
+2021-11-22 21:46:32.3793 Trace Initializing Layout Renderer: ${shortdate}
+2021-11-22 21:46:32.3793 Trace Initializing Layout Renderer: ${literal}
+2021-11-22 21:46:32.3793 Trace Initializing 'C:\Users\User\source\repos\deepeshverma\synetec-assessment-api\SynetecAssessmentApi\Logs\${shortdate}_log.txt'
+2021-11-22 21:46:32.3793 Trace FindReachableObject<NLog.Internal.IRenderable>:
+2021-11-22 21:46:32.3793 Trace Scanning SimpleLayout ''C:\Users\User\source\repos\deepeshverma\synetec-assessment-api\SynetecAssessmentApi\Logs\${shortdate}_log.txt''
+2021-11-22 21:46:32.3793 Trace  Scanning Property Renderers 'System.Collections.ObjectModel.ReadOnlyCollection`1[NLog.LayoutRenderers.LayoutRenderer]' System.Collections.ObjectModel
+2021-11-22 21:46:32.3793 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2021-11-22 21:46:32.3793 Trace  Scanning ShortDateLayoutRenderer 'Layout Renderer: ${shortdate}'
+2021-11-22 21:46:32.3941 Trace  Scanning LiteralLayoutRenderer 'Layout Renderer: ${literal}'
+2021-11-22 21:46:32.3941 Trace Initializing File Target[logfile]
+2021-11-22 21:46:32.3941 Trace FindReachableObject<NLog.Layouts.Layout>:
+2021-11-22 21:46:32.3941 Trace Scanning FileTarget 'File Target[logfile]'
+2021-11-22 21:46:32.3941 Trace  Scanning Property FileName ''C:\Users\User\source\repos\deepeshverma\synetec-assessment-api\SynetecAssessmentApi\Logs\${shortdate}_log.txt'' NLog.Layouts
+2021-11-22 21:46:32.3941 Trace  Scanning SimpleLayout ''C:\Users\User\source\repos\deepeshverma\synetec-assessment-api\SynetecAssessmentApi\Logs\${shortdate}_log.txt''
+2021-11-22 21:46:32.3941 Trace  Scanning Property LineEnding 'Default' NLog.Targets
+2021-11-22 21:46:32.3941 Trace  Scanning Property Layout ''${longdate} ${level:uppercase=true} ${message}'' NLog.Layouts
+2021-11-22 21:46:32.3941 Trace  Scanning SimpleLayout ''${longdate} ${level:uppercase=true} ${message}''
+2021-11-22 21:46:32.3941 Trace File Target[logfile] has 2 layouts
+2021-11-22 21:46:32.3941 Trace FileTarget(Name=logfile): Using appenderFactory: NLog.Internal.FileAppenders.RetryingMultiProcessFileAppender+Factory
+2021-11-22 21:46:32.3941 Info Configuration initialized.
+2021-11-22 21:46:32.4604 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.7.12.301. Product version: 4.7.12+1c2aa4e3677a17a65b73beee5881e8b8e1b7fc18. GlobalAssemblyCache: False
+2021-11-22 21:46:32.4604 Debug Targets for SynetecAssessmentApi.Logger.Logger by level:
+2021-11-22 21:46:32.4604 Debug Trace =>
+2021-11-22 21:46:32.4604 Debug Debug => logfile
+2021-11-22 21:46:32.4604 Debug Info => logfile
+2021-11-22 21:46:32.4604 Debug Warn => logfile
+2021-11-22 21:46:32.4604 Debug Error => logfile
+2021-11-22 21:46:32.4604 Debug Fatal => logfile
+2021-11-22 21:46:32.5252 Debug FileTarget(Name=logfile): Preparing for new file 'C:\Users\User\source\repos\deepeshverma\synetec-assessment-api\SynetecAssessmentApi\Logs\2021-11-22_log.txt'
+2021-11-22 21:46:32.5402 Debug Creating file appender: C:\Users\User\source\repos\deepeshverma\synetec-assessment-api\SynetecAssessmentApi\Logs\2021-11-22_log.txt
+2021-11-22 21:46:32.5402 Trace Opening C:\Users\User\source\repos\deepeshverma\synetec-assessment-api\SynetecAssessmentApi\Logs\2021-11-22_log.txt with allowFileSharedWriting=False
