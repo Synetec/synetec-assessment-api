@@ -1,8 +1,15 @@
-﻿namespace SynetecAssessmentApi.Dtos
+﻿
+namespace SynetecAssessmentApi.Dtos
 {
+    
+
     public class BonusPoolCalculatorResultDto
     {
-        public int Amount { get; set; }
+       
+        public double Amount { get; set; }
+        
         public EmployeeDto Employee { get; set; }
+        
+        public ErrorResponseDTO ErrorResponse { get; set; }
     }
 }

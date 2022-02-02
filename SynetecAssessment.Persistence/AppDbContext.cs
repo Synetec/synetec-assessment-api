@@ -4,10 +4,10 @@ using System.Reflection;
 
 namespace SynetecAssessmentApi.Persistence
 {
-    public class AppDbContext : DbContext
+    public class AppDbContext : DbContext, IAppDbContext
     {
-        public DbSet<Department> Departments { get; set; }
-        public DbSet<Employee> Employees { get; set; }
+        public virtual DbSet<Department> Departments { get; set; }
+        public virtual DbSet<Employee> Employees { get; set; }
 
         public AppDbContext(DbContextOptions<AppDbContext> options)
             : base(options)
