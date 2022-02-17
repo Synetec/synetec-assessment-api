@@ -20,7 +20,7 @@ namespace SynetecAssessmentApi.Controllers
             }
             catch (Exception e)
             {
-                return NotFound(e.Message);
+                return BadRequest(e.Message);
             }
         }
 
@@ -35,25 +35,33 @@ namespace SynetecAssessmentApi.Controllers
         {
             var bonusPoolService = new BonusPoolService();
 
-            if (bonusPoolService.isBonusValid(request))
+            if(request != null)
             {
-                try
+                if (bonusPoolService.isBonusValid(request))
                 {
-                    var response = await bonusPoolService.CalculateAsync(
-                    request.TotalBonusPoolAmount,
-                    request.SelectedEmployeeId);
+                    try
+                    {
+                        var response = await bonusPoolService.CalculateAsync(
+                        request.TotalBonusPoolAmount,
+                        request.SelectedEmployeeId);
 
-                    return Ok(response);
+                        return Ok(response);
+                    }
+                    catch (Exception e)
+                    {
+                        return NotFound(e.Message);
+                    }
                 }
-                catch (Exception e)
+                else
                 {
-                    return NotFound(e.Message);
+                    return BadRequest("Bonus is negative");
                 }
             }
             else
             {
-                return NotFound("Values incorrectly specified");
+                return BadRequest("Values incorrectly specified");
             }
+
         }
     }
 }

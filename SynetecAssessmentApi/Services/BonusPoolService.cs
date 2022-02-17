@@ -11,12 +11,7 @@ namespace SynetecAssessmentApi.Services
 {
     public class BonusPoolService
     {
-        protected AppDbContext _dbContext;
-
-        protected virtual void setDbContext(AppDbContext dbContext)
-        {
-            _dbContext = dbContext;
-        }
+        private readonly AppDbContext _dbContext;
 
         public BonusPoolService()
         {
@@ -56,14 +51,26 @@ namespace SynetecAssessmentApi.Services
 
         public bool isBonusValid(CalculateBonusDto request)
         {
-            bool isRequestValid = false;
+            bool isBonusValid = false;
 
-            if(request != null)
+            if(request.TotalBonusPoolAmount >= 0)
             {
-                isRequestValid = true;
+                isBonusValid = true;
             }
 
-            return isRequestValid;
+            return isBonusValid;
+        }
+
+        public bool isBonusValid(int bonusPoolAmount)
+        {
+            bool isBonusValid = false;
+
+            if (bonusPoolAmount >= 0)
+            {
+                isBonusValid = true;
+            }
+
+            return isBonusValid;
         }
 
         /// <summary>
@@ -74,45 +81,53 @@ namespace SynetecAssessmentApi.Services
         /// <returns></returns>
         public async Task<BonusPoolCalculatorResultDto> CalculateAsync(int bonusPoolAmount, int selectedEmployeeId)
         {
-            //load the details of the selected employee using the Id
-            Employee employee = await _dbContext.Employees
-                .Include(e => e.Department)
-                .FirstOrDefaultAsync(item => item.Id == selectedEmployeeId);
-
-            if(employee == null)
+            if(isBonusValid(bonusPoolAmount))
             {
-                throw new ArgumentException("Employee with ID " + selectedEmployeeId.ToString() + " not found");
-            }
+                //load the details of the selected employee using the Id
+                Employee employee = await _dbContext.Employees
+                    .Include(e => e.Department)
+                    .FirstOrDefaultAsync(item => item.Id == selectedEmployeeId);
 
-            //get the total salary budget for the company
-            int totalSalary = (int)_dbContext.Employees.Sum(item => item.Salary);
-
-            //Precaution: In case the database is not seeded or seeded with negative values
-            if(totalSalary <= 0)
-            {
-                throw new Exception("Sum of salaries is incorrect");
-            }
-
-            //calculate the bonus allocation for the employee
-            decimal bonusPercentage = (decimal)employee.Salary / (decimal)totalSalary;
-            int bonusAllocation = (int)(bonusPercentage * bonusPoolAmount);
-
-            return new BonusPoolCalculatorResultDto
-            {
-                Employee = new EmployeeDto
+                if (employee == null)
                 {
-                    Fullname = employee.Fullname,
-                    JobTitle = employee.JobTitle,
-                    Salary = employee.Salary,
-                    Department = new DepartmentDto
-                    {
-                        Title = employee.Department.Title,
-                        Description = employee.Department.Description
-                    }
-                },
+                    throw new ArgumentException("Employee with ID " + selectedEmployeeId.ToString() + " not found");
+                }
 
-                Amount = bonusAllocation
-            };
+                //get the total salary budget for the company
+                int totalSalary = (int)_dbContext.Employees.Sum(item => item.Salary);
+
+                //Precaution: In case the database is not seeded or seeded with negative values
+                if (totalSalary <= 0)
+                {
+                    throw new Exception("Sum of salaries is incorrect");
+                }
+
+                //calculate the bonus allocation for the employee
+                decimal bonusPercentage = (decimal)employee.Salary / (decimal)totalSalary;
+                int bonusAllocation = (int)(bonusPercentage * bonusPoolAmount);
+
+                return new BonusPoolCalculatorResultDto
+                {
+                    Employee = new EmployeeDto
+                    {
+                        Fullname = employee.Fullname,
+                        JobTitle = employee.JobTitle,
+                        Salary = employee.Salary,
+                        Department = new DepartmentDto
+                        {
+                            Title = employee.Department.Title,
+                            Description = employee.Department.Description
+                        }
+                    },
+
+                    Amount = bonusAllocation
+                };
+            }
+            else
+            {
+                throw new ArgumentException("Total bonus is not a valid value");
+            }
+            
         }
     }
 }
