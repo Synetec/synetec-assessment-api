@@ -20,7 +20,7 @@ namespace SynetecAssessmentApi.Controllers
             }
             catch (Exception e)
             {
-                return BadRequest(e.Message);
+                return NotFound(e.Message);
             }
         }
 
